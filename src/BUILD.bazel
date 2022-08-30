@@ -1,0 +1,16 @@
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_run_binary")
+
+js_binary(
+    name = "bin",
+    data = ["//js:node_modules/acorn"],
+    entry_point = "require_acorn.js",
+)
+
+js_run_binary(
+    name = "run",
+    srcs = [],
+    outs = ["out2"],
+    args = ["out2"],
+    log_level = "debug",
+    tool = ":bin",
+)
